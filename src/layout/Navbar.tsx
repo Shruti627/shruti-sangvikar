@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 const Navbar = () => {
   const [active, setActive] = useState("hero");
+  const [menuOpen, setMenuOpen] = useState(false); // NEW
 
   // Smooth scroll with offset
   const handleScroll = (id) => {
@@ -17,12 +18,22 @@ const Navbar = () => {
       top: y,
       behavior: "smooth",
     });
+
+    setMenuOpen(false); // close menu after click (mobile UX)
   };
 
   // Active section tracking (scroll spy)
   useEffect(() => {
-    // Added 'experience' and 'achievements' to the tracking array
-    const sections = ["hero", "about", "experience", "skills", "projects", "achievements", "education", "contact"];
+    const sections = [
+      "hero",
+      "about",
+      "experience",
+      "skills",
+      "projects",
+      "achievements",
+      "education",
+      "contact",
+    ];
 
     const handleScrollSpy = () => {
       let current = "hero";
@@ -32,7 +43,6 @@ const Navbar = () => {
         if (!el) return;
 
         const rect = el.getBoundingClientRect();
-        // If the top of the section is near the top of the viewport
         if (rect.top <= 120 && rect.bottom >= 120) {
           current = id;
         }
@@ -47,10 +57,10 @@ const Navbar = () => {
 
   const navItems = [
     { id: "about", label: "About" },
-    { id: "experience", label: "Experience" }, // New Item
+    { id: "experience", label: "Experience" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
-    { id: "achievements", label: "Achievements" }, // New Item
+    { id: "achievements", label: "Achievements" },
     { id: "education", label: "Education" },
     { id: "contact", label: "Contact" },
   ];
@@ -61,19 +71,18 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
 
           {/* Logo */}
-        <button
-  onClick={() => handleScroll("hero")}
-  className="group text-2xl font-extrabold tracking-tighter text-slate-900 transition-all duration-300 hover:scale-105"
->
-  Shruti
-  <span className="inline-block text-indigo-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-125">
-    .
-  </span>
-</button>
+          <button
+            onClick={() => handleScroll("hero")}
+            className="group text-2xl font-extrabold tracking-tighter text-slate-900 transition-all duration-300 hover:scale-105"
+          >
+            Shruti
+            <span className="inline-block text-indigo-600 transition-transform duration-300 group-hover:translate-x-1 group-hover:scale-125">
+              .
+            </span>
+          </button>
 
-          {/* Nav Links */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center gap-6 lg:gap-8 text-[14px] lg:text-[15px] font-medium">
-
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -85,8 +94,6 @@ const Navbar = () => {
                 }`}
               >
                 {item.label}
-
-                {/* Active underline */}
                 <span
                   className={`absolute left-0 -bottom-1 h-[2px] bg-indigo-600 transition-all duration-300 ${
                     active === item.id ? "w-full" : "w-0 group-hover:w-full"
@@ -94,10 +101,37 @@ const Navbar = () => {
                 />
               </button>
             ))}
-
           </nav>
 
+          {/* Hamburger (Mobile Only) */}
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden flex flex-col gap-1.5"
+          >
+            <span className="w-6 h-[2px] bg-slate-800" />
+            <span className="w-6 h-[2px] bg-slate-800" />
+            <span className="w-6 h-[2px] bg-slate-800" />
+          </button>
         </div>
+
+        {/* Mobile Menu */}
+        {menuOpen && (
+          <div className="md:hidden mt-2 pb-4 flex flex-col gap-4 text-sm font-medium">
+            {navItems.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => handleScroll(item.id)}
+                className={`text-left transition ${
+                  active === item.id
+                    ? "text-indigo-600"
+                    : "text-slate-700"
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        )}
       </Container>
     </header>
   );

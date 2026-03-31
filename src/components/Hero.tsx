@@ -198,7 +198,7 @@ const Hero = () => {
             initial={{ opacity: 0, x: 32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22,1,0.36,1], delay: 0.2 }}
-            className="hidden md:flex justify-center items-center"
+          className="flex justify-center items-center mt-10 md:mt-0"
           >
             <div className="relative group">
 
@@ -228,7 +228,7 @@ const Hero = () => {
               ))}
 
               {/* Photo card */}
-              <div className="relative w-[350px] h-[500px] rounded-3xl overflow-hidden border border-slate-200/70 shadow-[0_20px_56px_rgba(0,0,0,0.11)]">
+              <div className="relative w-[260px] h-[360px] sm:w-[300px] sm:h-[420px] md:w-[350px] md:h-[500px] rounded-3xl overflow-hidden border border-slate-200/70 shadow-[0_20px_56px_rgba(0,0,0,0.11)]">
                 <img
                   src="/shruti.jpeg"
                   alt="Shruti Sangvikar"
@@ -246,7 +246,7 @@ const Hero = () => {
               {/* Float: BARC */}
               <motion.div
                 variants={floatA} animate="animate"
-                className="absolute -top-3 -right-[4.5rem] bg-white border border-slate-200 shadow-xl px-3 py-2.5 rounded-2xl flex items-center gap-2 z-30"
+                className="absolute -top-3 right-0 md:-right-[4.5rem] bg-white border border-slate-200 shadow-xl px-3 py-2.5 rounded-2xl flex items-center gap-2 z-30"
                 style={{ boxShadow:"0 8px 26px rgba(99,102,241,0.13)" }}
               >
                 <div className="w-7 h-7 rounded-lg bg-indigo-50 flex items-center justify-center text-sm flex-shrink-0">🔬</div>
@@ -260,7 +260,7 @@ const Hero = () => {
               {/* Float: Live API */}
               <motion.div
                 variants={floatB} animate="animate"
-                className="absolute -bottom-5 -left-[4.5rem] bg-white border border-slate-200 shadow-xl px-3 py-2.5 rounded-2xl z-30"
+                className="absolute -bottom-5 left-0 md:-left-[4.5rem] bg-white border border-slate-200 shadow-xl px-3 py-2.5 rounded-2xl z-30"
                 style={{ boxShadow:"0 8px 26px rgba(0,0,0,0.08)" }}
               >
                 <div className="flex items-center gap-1.5 mb-1">
