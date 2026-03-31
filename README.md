@@ -1,8 +1,3 @@
-# 👩‍💻 Shruti Sangvikar
+# 👩‍💻 Ms. Shruti P. Sangvikar
 
-⚙️ Backend engineer who builds systems that **don’t die in production**.  
-🚀 High-performance APIs, distributed systems, and scale that actually holds.  
-🧠 Blending backend + AI (LLMs, RAG, ML) into real-world products.  
-🔥 Ships fast, breaks bottlenecks, optimizes everything.  
-🏗️ Built in startups, tested in govt systems — refined in production.  
-💀 If it can’t scale or survive chaos, I don’t ship it.
+Full-stack engineer building production-grade systems with GenAI (LLMs, RAG, ML) integrated end-to-end. I focus on scalable backends, clean frontends, and architectures that hold under real traffic—not just demos. Experienced across startups and government systems, shipping fast while keeping performance, reliability, and system design tight. If it doesn’t scale, it’s not done.
