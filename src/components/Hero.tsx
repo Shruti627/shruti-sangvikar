@@ -154,23 +154,36 @@ const Hero = () => {
 
 </motion.div>
 
-            {/* Stats row */}
-            <motion.div variants={fadeUp} className="flex items-stretch gap-0 flex-wrap mb-9">
-              {[
-                { value: "9.86", label: "CGPA",        sub: "T.E. ECE ." },
-                { value: "3+",   label: "Internships", sub: "Incl. Govt. of India" },
-                { value: "15+",   label: "Projects",    sub: "Production systems"  },
-              ].map((s, i) => (
-                <div key={i} className="flex items-center">
-                  <div className={`${i > 0 ? "px-8" : "pr-8"}`}>
-                    <p className="text-3xl font-black text-slate-900 tracking-tight leading-none mb-1">{s.value}</p>
-                    <p className="text-xs font-black uppercase tracking-widest text-indigo-500">{s.label}</p>
-                    <p className="text-xs text-slate-400 mt-0.5">{s.sub}</p>
-                  </div>
-                  {i < 2 && <div className="w-[1px] h-10 bg-slate-200 self-center" />}
-                </div>
-              ))}
-            </motion.div>
+           <motion.div
+  variants={fadeUp}
+  className="flex flex-wrap justify-between md:justify-start md:flex-nowrap mb-9"
+>
+  {[
+    { value: "9.86", label: "CGPA", sub: "T.E. ECE ." },
+    { value: "3+", label: "Internships", sub: "Incl. Govt. of India" },
+    { value: "15+", label: "Projects", sub: "Production systems" },
+  ].map((s, i) => (
+    <div
+      key={i}
+      className="w-[48%] md:w-auto flex flex-col md:flex-row md:items-center mb-6 md:mb-0"
+    >
+      <div className="md:px-8">
+        <p className="text-3xl font-black text-slate-900 tracking-tight leading-none mb-1">
+          {s.value}
+        </p>
+        <p className="text-xs font-black uppercase tracking-widest text-indigo-500">
+          {s.label}
+        </p>
+        <p className="text-xs text-slate-400 mt-0.5">{s.sub}</p>
+      </div>
+
+      {/* Divider ONLY on desktop */}
+      {i < 2 && (
+        <div className="hidden md:block w-[1px] h-10 bg-slate-200 self-center" />
+      )}
+    </div>
+  ))}
+</motion.div>
 
             {/* Tech stack pills */}
             <motion.div variants={fadeUp} className="flex items-center gap-2.5 flex-wrap">
